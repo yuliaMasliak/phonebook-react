@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'https://notes-server-website.onrender.com';
+const baseUrl = 'https://notes-server-website.onrender.com/persons';
 
 const getAllContacts = () => {
   const request = axios.get(baseUrl);

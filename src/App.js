@@ -27,6 +27,7 @@ const App = () => {
 
   const effect = () => {
     getAllContacts().then((response) => {
+      console.log(response.data);
       setPersons(response.data);
     });
   };
