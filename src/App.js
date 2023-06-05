@@ -18,7 +18,7 @@ const App = () => {
   const [success, setSuccess] = useState(true);
   let contact = {
     name: '',
-    phone: ''
+    number: ''
   };
   const inputName = useRef();
   const inputPhone = useRef();
@@ -43,7 +43,7 @@ const App = () => {
     contact.name = event.target.value;
   };
   const handleInputPhone = (event) => {
-    contact.phone = event.target.value;
+    contact.number = event.target.value;
   };
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -68,6 +68,7 @@ const App = () => {
       }
     });
     if (!sismilarName) {
+      console.log(contact);
       addContact(contact)
         .then((response) => {
           setPersons(persons.concat(response.data));
