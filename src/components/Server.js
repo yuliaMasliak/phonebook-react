@@ -1,7 +1,11 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:3001/persons';
+const baseUrl = 'https://notes-server-website.onrender.com';
 
+const getAllContacts = () => {
+  const request = axios.get(baseUrl);
+  return request;
+};
 const addContact = (contact) => {
   const request = axios.post(baseUrl, contact);
   return request;
@@ -17,4 +21,4 @@ const updateContact = (contact) => {
   return request;
 };
 
-export { addContact, deleteContact, updateContact };
+export { addContact, deleteContact, updateContact, getAllContacts };

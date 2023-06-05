@@ -3,7 +3,12 @@ import axios from 'axios';
 import Filter from './components/Filter';
 import Form from './components/Form';
 import Persons from './components/Persons';
-import { addContact, deleteContact, updateContact } from './components/Server';
+import {
+  addContact,
+  deleteContact,
+  updateContact,
+  getAllContacts
+} from './components/Server';
 import Error from './components/Error';
 
 const App = () => {
@@ -19,6 +24,13 @@ const App = () => {
   const inputPhone = useRef();
   const inputSearch = useRef();
   const inputResult = useRef();
+
+  const effect = () => {
+    getAllContacts().then((response) => {
+      setPersons(response.data);
+    });
+  };
+  useEffect(effect, []);
 
   const handleSearch = (event) => {
     let newSearch = searchResult.concat(event.target.value);
@@ -81,13 +93,6 @@ const App = () => {
   const handleFocus = (event) => {
     event.target.value = '';
   };
-
-  const effect = () => {
-    axios.get('http://localhost:3001/persons').then((response) => {
-      setPersons(response.data);
-    });
-  };
-  useEffect(effect, []);
 
   return (
     <div>
